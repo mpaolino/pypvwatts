@@ -148,31 +148,29 @@ class Test(unittest.TestCase):
                           lat=-10, lon=-100, azimuth=0, inoct=10)
         self.assertRaises(PVWattsValidationError, PVWatts.request,
                           system_size=4, dataset='tmy2', derate=0.77,
-                          lat=-10, lon=-100, azimuth=0, gamma=-0.1)
+                          lat=-10, lon=-100, azimuth=0, gamma=-3)
 
     def test_pypvwatts(self):
         """Test pypvwatts"""
-        result = PVWatts.request(system_size=4, dataset='tmy2', derate=0.77,
-                                 lat=40, lon=-105)
-        self.assertEqual(results.ac_annual, 7607.97607421875)
-        self.assertEqual(results.solrad_annual, 5.553147792816162)
-        self.assertEqual(results.station_info['city'], 'BOULDER')
-        self.assertIn(457.9238891601562, results.dc_monthly)
-        self.assertIn(182.4970855712891, results.poa_monthly)
-        self.assertIn(5.992257595062256, results.solrad_monthly)
-        self.assertEqual(result.elev, 1634)
+        PVWatts.api_key = 'DEMO_KEY'
+        results = PVWatts.request(system_size=4, dataset='tmy2', derate=0.77,
+                            lat=40, lon=-105)
+        self.assert_results(results)
 
     def test_pypvwatts_instance(self):
         """Test pypvwatts instance based searches"""
-        p = PVWatts()
+        p = PVWatts(api_key='DEMO_KEY')
         results = p.request(system_size=4, dataset='tmy2', derate=0.77, lat=40,
                            lon=-105)
+        self.assert_results(results)
+
+    def assert_results(self, results):
         self.assertEqual(results.ac_annual, 7607.97607421875)
-        self.assertEqual(results.solrad_annual, 5.553147792816162)
+        self.assertEqual(results.solrad_annual, 7.110589504241943)
         self.assertEqual(results.station_info['city'], 'BOULDER')
-        self.assertIn(457.9238891601562, results.dc_monthly)
-        self.assertIn(182.4970855712891, results.poa_monthly)
-        self.assertIn(5.992257595062256, results.solrad_monthly)
+        self.assertIn(784.6525268554688, results.dc_monthly)
+        self.assertIn(252.2440948486328, results.poa_monthly)
+        self.assertIn(8.341022491455078, results.solrad_monthly)
 
 
 if __name__ == "__main__":

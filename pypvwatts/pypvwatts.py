@@ -35,9 +35,10 @@ class PVWatts():
     '''
 
     PVWATTS_QUERY_URL = 'http://developer.nrel.gov/api/pvwatts/v4.json'
+    api_key = 'DEMO_KEY'
 
     def __init__(self, api_key='DEMO_KEY', proxy=None):
-        self.api_key = api_key
+        PVWatts.api_key = api_key
         self.proxy = proxy
 
     @omnimethod
@@ -251,10 +252,7 @@ class PVWatts():
                   'gamma': PVWatts.validate_gamma(gamma),
                   'callback': callback}
 
-        if self and self.api_key:
-            params['api_key'] = self.api_key
-        else:
-            params['api_key'] = 'DEMO_KEY'
+        params['api_key'] = PVWatts.api_key
 
         request = requests.Request('GET',
                                    url=PVWatts.PVWATTS_QUERY_URL,
