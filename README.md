@@ -23,9 +23,6 @@ Errors
 
 All API errors are reported via JSON response, using the errors field.
 
-Example
-
-::
 
     >>> from pypvwatts import PVWatts
     >>> result = PVWatts.request(system_size=4, dataset='tmy2', derate=0.77, lat=40, lon=-105)
@@ -42,4 +39,3 @@ Tests
 Unit tests are provided in test.py
 
 Author: Miguel Paolino <mpaolino@gmail.com>
-
