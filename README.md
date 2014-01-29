@@ -9,9 +9,8 @@ API Doc: http://developer.nrel.gov/docs/solar/pvwatts-v4/
 This library provides shortcuts for all response output fields, all can be
 accessed as a result property.
 
-Usage:
-
-::
+Usage
+-----
 
     >>> from pypvwatts import PVWatts
     >>> result = PVWatts.request(system_size=4, dataset='tmy2', derate=0.77, lat=40, lon=-105)
@@ -19,11 +18,12 @@ Usage:
     7607.97607421875    
 
 
-Errors:
+Errors
+------
 
 All API errors are reported via JSON response, using the errors field.
 
-Example:
+Example
 
 ::
 
@@ -36,7 +36,8 @@ Example:
 All other service errors, such as connectivity are reported using Request's exceptions.
 
 
-Tests:
+Tests
+-----
 
 Unit tests are provided in test.py
 
