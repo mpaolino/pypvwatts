@@ -24,7 +24,7 @@ class PVWattsResult(object):
         Access outputs results as properties
         """
         result = None
-        if name in PVWattsResult.shortcut_fields and 'outputs' in self.result
+        if name in PVWattsResult.shortcut_fields and 'outputs' in self.result:
             return self.result['outputs'][name]
         if name is not None:
             result = self.result[name]
