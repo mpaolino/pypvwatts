@@ -30,6 +30,18 @@ Usage - with instance methods
     7607.97607421875    
 
 
+Raw data
+--------
+
+Raw result data can be queried using the result.raw attribute.
+
+
+    >>> from pypvwatts import PVWatts
+    >>> result = PVWatts.request(system_size=4, dataset='tmy2', derate=0.77, lat=40, lon=-105)
+    >>> result.raw
+    {u'errors': [u'You have exceeded your rate limit. Try again later or contact us at http://developer.nrel.gov/contact for assistance']}
+
+
 Errors
 ------
 
