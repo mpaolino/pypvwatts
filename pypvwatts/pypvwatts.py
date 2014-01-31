@@ -17,8 +17,6 @@ from __version__ import VERSION
 
 import functools
 
-__all__ = ['PVWatts', 'PVWattsResult', 'PVWattsError']
-
 
 # this decorator lets me use methods as both static and instance methods
 class omnimethod(object):

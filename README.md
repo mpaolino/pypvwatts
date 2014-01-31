@@ -2,12 +2,25 @@
 pypvwatts
 =========
 
-A NREL PVWAtts API Python wrapper.
+A NREL PVWAtts API v4 Python wrapper.
 
-API Doc: http://developer.nrel.gov/docs/solar/pvwatts-v4/
+Installing
+----------
 
-This library provides shortcuts for all response output fields, all can be
-accessed as a result property.
+There are two ways
+
+
+Using PIP
+
+
+    $ pip install pypvwatts
+
+
+Using setup.py
+
+
+    $ python setup.py install
+
 
 Usage - with class methods
 --------------------------
@@ -30,6 +43,18 @@ Usage - with instance methods
     7607.97607421875    
 
 
+Request parameters and responses
+--------------------------------
+
+All request parameters correspond to NREL PVWatts API parameters.
+
+This library provides shortcuts for all response output fields, all can be
+accessed as a result property.
+
+Please refer to NREL PVWatts documentation for further details.
+
+http://developer.nrel.gov/docs/solar/pvwatts-v4/
+
 Raw data
 --------
 
@@ -45,7 +70,7 @@ Raw result data can be queried using the result.raw attribute.
 Errors
 ------
 
-All API errors are reported via JSON response, using the errors field.
+All API errors are reported via JSON response, using the errors attribute.
 
 
     >>> from pypvwatts import PVWatts
@@ -54,12 +79,13 @@ All API errors are reported via JSON response, using the errors field.
     [u'You have exceeded your rate limit. Try again later or contact us at http://developer.nrel.gov/contact for assistance']
 
 
-All other service errors, such as connectivity are reported using Request's exceptions.
+All other service errors, such as connectivity are raised as request's python library exceptions.
 
 
 Tests
 -----
 
 Unit tests are provided in test.py
+
 
 Author: Miguel Paolino <mpaolino@gmail.com>
