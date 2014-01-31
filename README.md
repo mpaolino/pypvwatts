@@ -88,4 +88,9 @@ Tests
 Unit tests are provided in test.py
 
 
+Changelog
+---------
+
+1.0.0 - First release
+
 Author: Miguel Paolino <mpaolino@gmail.com>
