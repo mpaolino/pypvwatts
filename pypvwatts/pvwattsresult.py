@@ -27,7 +27,7 @@ class PVWattsResult(object):
         if name in PVWattsResult.shortcut_fields and 'outputs' in self.result:
             return self.result['outputs'][name]
         if name is not None:
-            result = self.result[name]
+            return self.result[name]
         return result
 
     def __unicode__(self):
