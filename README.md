@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/mpaolino/pypvwatts.svg?branch=master)](https://travis-ci.org/mpaolino/pypvwatts)
 =========
 pypvwatts
 =========
