@@ -1,17 +1,12 @@
 # coding: utf-8
 #
-# Miguel Paolino <mpaolino@gmail.com> - 2014
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU Lesser General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
+# Miguel Paolino <mpaolino@gmail.com> 
 
 """
 Python wrapper for NREL PVWatt version 4.
 """
-from pvwattsresult import PVWattsResult
-from pvwattserror import PVWattsError, PVWattsValidationError
+from .pvwattsresult import PVWattsResult
+from .pvwattserror import PVWattsError, PVWattsValidationError
 import requests
 from __version__ import VERSION
 
