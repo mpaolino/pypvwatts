@@ -105,4 +105,4 @@ Changelog
 
 1.0.0 - First release
 
-Author: Miguel Paolino <mpaolino@gmail.com>
+Author: Miguel Paolino <mpaolino@gmail.com> for [renooble.com](http://www.renooble.com)
