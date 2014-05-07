@@ -1,7 +1,4 @@
 # coding: utf-8
-#
-# Miguel Paolino <mpaolino@gmail.com> 
-
 """
 Python wrapper for NREL PVWatt version 4.
 """

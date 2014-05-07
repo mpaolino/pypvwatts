@@ -5,6 +5,9 @@ pypvwatts
 
 A NREL PVWAtts API v4 thin Python wrapper built around requests library.
 
+Developed by <http://renooble.com>.
+
+
 
 PVWatts API v4 Documentation: <http://developer.nrel.gov/docs/solar/pvwatts-v4/>
 
@@ -105,4 +108,4 @@ Changelog
 
 1.0.0 - First release
 
-Author: Miguel Paolino <mpaolino@gmail.com>
+Author: Miguel Paolino <mpaolino@gmail.com> - Copyright <http://renooble.com>
