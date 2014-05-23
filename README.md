@@ -104,6 +104,8 @@ Simple tests are provided in test.py. Run them with:
 Changelog
 ---------
 
+1.1.1 - Updated copyright notice
+
 1.1.0 - Minor import fix and README update
 
 1.0.0 - First release
