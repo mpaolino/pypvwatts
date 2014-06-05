@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.org/mpaolino/pypvwatts.svg?branch=master)](https://travis-ci.org/mpaolino/pypvwatts)
-=========
 pypvwatts
 =========
+
+[![Build Status](https://travis-ci.org/mpaolino/pypvwatts.svg?branch=master)](https://travis-ci.org/mpaolino/pypvwatts)
 
 A NREL PVWAtts API v4 thin Python wrapper built around requests library.
 
@@ -103,6 +103,8 @@ Simple tests are provided in test.py. Run them with:
 
 Changelog
 ---------
+
+1.2.0 - Fixed proxy handling, now using proxies parameter.
 
 1.1.1 - Updated copyright notice
 
