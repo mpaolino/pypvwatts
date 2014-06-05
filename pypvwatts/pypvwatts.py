@@ -27,9 +27,9 @@ class PVWatts():
     PVWATTS_QUERY_URL = 'http://developer.nrel.gov/api/pvwatts/v4.json'
     api_key = 'DEMO_KEY'
 
-    def __init__(self, api_key='DEMO_KEY', proxy=None):
+    def __init__(self, api_key='DEMO_KEY', proxies=None):
         PVWatts.api_key = api_key
-        self.proxy = proxy
+        self.proxies = proxies
 
     @omnimethod
     def validate_system_size(self, system_size):
@@ -191,7 +191,7 @@ class PVWatts():
     @omnimethod
     def get_data(self, params={}):
         """
-        Retrieve a JSON object from a (parameterized) URL.
+        Make the request and return the deserialided JSON from the response
 
         :param params: Dictionary mapping (string) query parameters to values
         :type params: dict
@@ -200,20 +200,21 @@ class PVWatts():
         :rtype: (dict or array)
 
         """
-        request = requests.Request('GET',
-                                   url=PVWatts.PVWATTS_QUERY_URL,
-                                   params=params,
-                                   headers={'User-Agent': ''.join(
-                                            ['pypvwatts/', VERSION,
-                                             ' (Python)'])})
-
-        session = requests.Session()
-
-        if self and self.proxy:
-            session.proxies = {'https': self.proxy}
-
-        response = session.send(request.prepare())
-        session.close()
+        if self and hasattr(self, 'proxies') and self.proxies is not None:
+            response = requests.request('GET',
+                                        url=PVWatts.PVWATTS_QUERY_URL,
+                                        params=params,
+                                        headers={'User-Agent': ''.join(
+                                                 ['pypvwatts/', VERSION,
+                                                  ' (Python)'])},
+                                        proxies=self.proxies)
+        else:
+            response = requests.request('GET',
+                                        url=PVWatts.PVWATTS_QUERY_URL,
+                                        params=params,
+                                        headers={'User-Agent': ''.join(
+                                                 ['pypvwatts/', VERSION,
+                                                  ' (Python)'])})
 
         if response.status_code == 403:
             raise PVWattsError("Forbidden, 403")
@@ -243,13 +244,6 @@ class PVWatts():
                   'callback': callback}
 
         params['api_key'] = PVWatts.api_key
-
-        request = requests.Request('GET',
-                                   url=PVWatts.PVWATTS_QUERY_URL,
-                                   params=params,
-                                   headers={'User-Agent': ''.join(
-                                            ['pypvwatts/', VERSION,
-                                             ' (Python)'])})
 
         if self is not None:
             return PVWattsResult(self.get_data(params=params))
