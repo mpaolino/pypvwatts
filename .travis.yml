@@ -6,9 +6,15 @@ python:
 
 before_install:
     - pip install requests
+    - pip install python-coveralls
+    - pip install pytest-cov
+    - pip install pytest-flakes
 
 install:
     - python setup.py install
 
 script:
-    - python -m unittest pypvwatts.test
+    - py.test --flake  --cov-report term --cov pypvwatts pypvwatts/test.py
+
+after_success:
+  - coveralls
