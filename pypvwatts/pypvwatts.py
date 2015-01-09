@@ -21,10 +21,10 @@ class omnimethod(object):
 
 class PVWatts():
     '''
-    A Python wrapper for NREL PVWatts V4.0.0 API
+    A Python wrapper for NREL PVWatts V5.0.0 API
     '''
 
-    PVWATTS_QUERY_URL = 'http://developer.nrel.gov/api/pvwatts/v4.json'
+    PVWATTS_QUERY_URL = 'http://developer.nrel.gov/api/pvwatts/v5.json'
     api_key = 'DEMO_KEY'
 
     def __init__(self, api_key='DEMO_KEY', proxies=None):
@@ -32,17 +32,88 @@ class PVWatts():
         self.proxies = proxies
 
     @omnimethod
-    def validate_system_size(self, system_size):
-        if system_size is None:
+    def validate_system_capacity(self, system_capacity):
+        if system_capacity is None:
             return
 
-        if not isinstance(system_size, (int, long, float)):
-            raise PVWattsValidationError('system_size must be int, long or float')
+        if not isinstance(system_capacity, (int, long, float)):
+            raise PVWattsValidationError(
+                'system_capacity must be int, long or float')
 
-        if not (0.05 <= system_size and system_size <= 500000):
-            raise PVWattsValidationError('system_size must be >= 0.05 and <= 500000')
+        if not (0.05 <= system_capacity and system_capacity <= 500000):
+            raise PVWattsValidationError(
+                'system_capacity must be >= 0.05 and <= 500000')
 
-        return system_size
+        return system_capacity
+
+    @omnimethod
+    def validate_module_type(self, module_type):
+        if module_type is None:
+            return
+
+        if not isinstance(module_type, (int)):
+            raise PVWattsValidationError(
+                'module_type must be int, long or float')
+
+        if module_type not in (0, 1, 2):
+            raise PVWattsValidationError(
+                'module_type must be 0, 1 or 2')
+
+        return module_type
+
+    @omnimethod
+    def validate_losses(self, losses):
+        if losses is None:
+            return
+
+        if not isinstance(losses, (int, long, float)):
+            raise PVWattsValidationError('losses must be int, long or float')
+
+        if not (-5 <= losses and losses <= 99):
+            raise PVWattsValidationError('losses must be >= -5\% and <= 99%')
+
+        return losses
+
+    @omnimethod
+    def validate_array_type(self, array_type):
+        if array_type is None:
+            return
+
+        if not isinstance(array_type, (int)):
+            raise PVWattsValidationError(
+                'array_type must be int, long or float')
+
+        if array_type not in (0, 1, 2, 3, 4):
+            raise PVWattsValidationError(
+                'array_type must be 0, 1, 2, 3 or 4')
+
+        return array_type
+
+    @omnimethod
+    def validate_tilt(self, tilt):
+        if tilt is None:
+            return
+
+        if not isinstance(tilt, (int, long, float)):
+            raise PVWattsValidationError('tilt must be int, long or float')
+
+        if not (0 <= tilt and tilt <= 90):
+            raise PVWattsValidationError('tilt must be >= 0 and <= 90')
+
+        return tilt
+
+    @omnimethod
+    def validate_azimuth(self, azimuth):
+        if azimuth is None:
+            return
+
+        if not isinstance(azimuth, (int, long, float)):
+            raise PVWattsValidationError('azimuth must be int, long or float')
+
+        if not (0 <= azimuth and azimuth <= 360):
+            raise PVWattsValidationError('azimuth must be >= 0 and <= 360')
+
+        return azimuth
 
     @omnimethod
     def validate_lat(self, lat):
@@ -66,7 +137,7 @@ class PVWatts():
             raise PVWattsValidationError('lon must be int, long or float')
 
         if not (-180 <= lon and lon <= 180):
-            raise PVWattsValidationError('lon must be >= -90 and <= 90')
+            raise PVWattsValidationError('lon must be >= -180 and <= 180')
 
         return lon
 
@@ -79,9 +150,23 @@ class PVWatts():
             raise PVWattsValidationError('dataset must be str or unicode')
 
         if dataset not in ('tmy2', 'tmy3', 'intl'):
-            raise PVWattsValidationError('dataset must be \'tmy2\', \'tmy3\' or \'intl\'')
+            raise PVWattsValidationError(
+                'dataset must be \'tmy2\', \'tmy3\' or \'intl\'')
 
         return dataset
+
+    @omnimethod
+    def validate_radius(self, radius):
+        if radius is None:
+            return
+
+        if not isinstance(radius, (int, long, float)):
+            raise PVWattsValidationError('radius must be int, long or float')
+
+        if not (0 <= radius):
+            raise PVWattsValidationError('radius must be >= 0')
+
+        return radius
 
     @omnimethod
     def validate_timeframe(self, timeframe):
@@ -89,100 +174,55 @@ class PVWatts():
             return
 
         if not isinstance(timeframe, (str, unicode)):
-            raise PVWattsValidationError('timeframe must be str or unicode')
+            raise PVWattsValidationError(
+                'timeframe must be str or unicode')
 
         if timeframe not in ('hourly', 'monthly'):
-            raise PVWattsValidationError('dataset must be \'hourly\' or \'monthly\'')
+            raise PVWattsValidationError(
+                'dataset must be \'hourly\' or \'monthly\'')
 
         return timeframe
 
     @omnimethod
-    def validate_azimuth(self, azimuth):
-        if azimuth is None:
+    def validate_dc_ac_ratio(self, dc_ac_ratio):
+        if dc_ac_ratio is None:
             return
 
-        if not isinstance(azimuth, (int, long, float)):
-            raise PVWattsValidationError('azimuth must be int, long or float')
+        if not isinstance(dc_ac_ratio, (int, long, float)):
+            raise PVWattsValidationError(
+                'dc_ac_ratio must be int, long or float')
 
-        if not (0 <= azimuth and azimuth <= 360):
-            raise PVWattsValidationError('azimuth must be >= 0 and <= 360')
+        if not (0 < dc_ac_ratio):
+            raise PVWattsValidationError(
+                'dc_ac_ratio must be positive')
 
-        return azimuth
+        return dc_ac_ratio
 
     @omnimethod
-    def validate_derate(self, derate):
-        if derate is None:
+    def validate_gcr(self, gcr):
+        if gcr is None:
             return
 
-        if not isinstance(derate, (int, long, float)):
-            raise PVWattsValidationError('derate must be int, long or float')
+        if not isinstance(gcr, (int, long, float)):
+            raise PVWattsValidationError('gcr must be int, long or float')
 
-        if not (0 <= derate and derate <= 1):
-            raise PVWattsValidationError('derate must be >= 0 and <= 1')
+        if not (0 <= gcr and gcr <= 3):
+            raise PVWattsValidationError('gcr must be >= 0 and <= 3')
 
-        return derate
+        return gcr
 
     @omnimethod
-    def validate_tilt(self, tilt):
-        if tilt is None:
+    def validate_inv_eff(self, inv_eff):
+        if inv_eff is None:
             return
 
-        if not isinstance(tilt, (int, long, float)):
-            raise PVWattsValidationError('tilt must be int, long or float')
+        if not isinstance(inv_eff, (int, long, float)):
+            raise PVWattsValidationError('inv_eff must be int, long or float')
 
-        return tilt
+        if not (90 <= inv_eff and inv_eff <= 99.5):
+            raise PVWattsValidationError('inv_eff must be >= 90 and <= 99.5')
 
-    @omnimethod
-    def validate_tilt_eq_lat(self, tilt_eq_lat):
-        if tilt_eq_lat is None:
-            return
-
-        if not isinstance(tilt_eq_lat, (int, long, float)):
-            raise PVWattsValidationError('tilt_eq_lat must be int, long or float')
-
-        if tilt_eq_lat not in (0, 1):
-            raise PVWattsValidationError('tilt_eq_lat must be 0 or 1')
-
-        return tilt_eq_lat
-
-    @omnimethod
-    def validate_track_mode(self, track_mode):
-        if track_mode is None:
-            return
-
-        if not isinstance(track_mode, (int, long, float)):
-            raise PVWattsValidationError('track_mode must be int, long or float')
-
-        if track_mode not in (0, 1, 2):
-            raise PVWattsValidationError('track_mode must be 0, 1 or 2')
-
-        return track_mode
-
-    @omnimethod
-    def validate_inoct(self, inoct):
-        if inoct is None:
-            return
-
-        if not isinstance(inoct, (int, long, float)):
-            raise PVWattsValidationError('inoct must be int, long or float')
-
-        if not (30 <= inoct and inoct <= 80):
-            raise PVWattsValidationError('inoct must be >= 30 and <= 80')
-
-        return inoct
-
-    @omnimethod
-    def validate_gamma(self, gamma):
-        if gamma is None:
-            return
-
-        if not isinstance(gamma, (int, long, float)):
-            raise PVWattsValidationError('gamma must be int, long or float')
-
-        if not (-2 <= gamma and gamma <= -0.01):
-            raise PVWattsValidationError('gamma must be >= -2 and <= -0.01')
-
-        return gamma
+        return inv_eff
 
     @property
     def version(self):
@@ -221,27 +261,33 @@ class PVWatts():
         return response.json()
 
     @omnimethod
-    def request(self, format=None, system_size=None, address=None, lat=None,
-                lon=None, file_id=None, dataset='tmy3', timeframe='monthly',
-                azimuth=None, derate=None, tilt=None, tilt_eq_lat=0,
-                track_mode=1, inoct=None, gamma=None, callback=None):
+    def request(self, format=None, system_capacity=None, module_type=0,
+                losses=12, array_type=1, tilt=None, azimuth=None,
+                address=None, lat=None, lon=None, file_id=None, dataset='tmy3',
+                radius=0, timeframe='monthly', dc_ac_ratio=None, gcr=None,
+                inv_eff=None, callback=None):
 
-        params = {'format': format,
-                  'system_size': PVWatts.validate_system_size(system_size),
-                  'address': address,
-                  'lat': PVWatts.validate_lat(lat),
-                  'lon': PVWatts.validate_lon(lon),
-                  'file_id': file_id,
-                  'dataset': PVWatts.validate_dataset(dataset),
-                  'timeframe': PVWatts.validate_timeframe(timeframe),
-                  'azimuth': PVWatts.validate_azimuth(azimuth),
-                  'derate': PVWatts.validate_derate(derate),
-                  'tilt': PVWatts.validate_tilt(tilt),
-                  'tilt_eq_lat': PVWatts.validate_tilt_eq_lat(tilt_eq_lat),
-                  'track_mode': PVWatts.validate_track_mode(track_mode),
-                  'inoct': PVWatts.validate_inoct(inoct),
-                  'gamma': PVWatts.validate_gamma(gamma),
-                  'callback': callback}
+        params = {
+            'format': format,
+            'system_capacity':
+            PVWatts.validate_system_capacity(system_capacity),
+            'module_type': PVWatts.validate_module_type(module_type),
+            'losses': PVWatts.validate_losses(losses),
+            'array_type': PVWatts.validate_array_type(array_type),
+            'tilt': PVWatts.validate_tilt(tilt),
+            'azimuth': PVWatts.validate_azimuth(azimuth),
+            'address': address,
+            'lat': PVWatts.validate_lat(lat),
+            'lon': PVWatts.validate_lon(lon),
+            'file_id': file_id,
+            'dataset': PVWatts.validate_dataset(dataset),
+            'radius': PVWatts.validate_radius(radius),
+            'timeframe': PVWatts.validate_timeframe(timeframe),
+            'dc_ac_ratio': PVWatts.validate_dc_ac_ratio(dc_ac_ratio),
+            'gcr': PVWatts.validate_gcr(gcr),
+            'inv_eff': PVWatts.validate_inv_eff(inv_eff),
+            'callback': callback
+        }
 
         params['api_key'] = PVWatts.api_key
 
