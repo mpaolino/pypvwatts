@@ -3,13 +3,13 @@ pypvwatts
 
 [![Build Status](https://travis-ci.org/mpaolino/pypvwatts.svg?branch=master)](https://travis-ci.org/mpaolino/pypvwatts)
 
-A NREL PVWAtts API v4 thin Python wrapper built around requests library.
+A NREL PVWAtts API v5 thin Python wrapper built around requests library.
 
 Developed by <http://renooble.com>.
 
 
 
-PVWatts API v4 Documentation: <http://developer.nrel.gov/docs/solar/pvwatts-v4/>
+PVWatts API v5 Documentation: <http://developer.nrel.gov/docs/solar/pvwatts-v5/>
 
 Python requests library: <http://docs.python-requests.org/en/latest/>
 
@@ -37,20 +37,26 @@ Usage - with class methods
 
 
     >>> from pypvwatts import PVWatts
-    >>> PVWatts.api_key = 'myapikeyHLM6x2In2KmX4fxsTRRBT2r9KfDagJjU'
-    >>> result = PVWatts.request(system_size=4, dataset='tmy2', derate=0.77, lat=40, lon=-105)
+    >>> PVWatts.api_key = 'myapikey'
+    >>> result = PVWatts.request(
+            system_capacity=4, module_type=1, array_type=1,
+            azimuth=190, tilt=30, dataset='tmy2',
+            losses=0.13, lat=40, lon=-105)
     >>> result.ac_annual
-    7607.97607421875    
+    6683.64501953125    
 
 Usage - with instance methods
 -----------------------------
 
 
     >>> from pypvwatts import PVWatts
-    >>> p = PVWatts(api_key='myapikeyHLM6x2In2KmX4fxsTRRBT2r9KfDagJjU')
-    >>> result = p.request(system_size=4, dataset='tmy2', derate=0.77, lat=40, lon=-105)
+    >>> p = PVWatts(api_key='myapikey')
+    >>> result = p.request(
+            system_capacity=4, module_type=1, array_type=1,
+            azimuth=190, tilt=30, dataset='tmy2',
+            losses=0.13, lat=40, lon=-105)
     >>> result.ac_annual
-    7607.97607421875    
+    6683.64501953125    
 
 
 Request parameters and responses
@@ -72,7 +78,10 @@ Raw result data can be queried using the result.raw attribute.
 
 
     >>> from pypvwatts import PVWatts
-    >>> result = PVWatts.request(system_size=4, dataset='tmy2', derate=0.77, lat=40, lon=-105)
+    >>> result = PVWatts.request(
+            system_capacity=4, module_type=1, array_type=1,
+            azimuth=190, tilt=30, dataset='tmy2',
+            losses=0.13, lat=40, lon=-105)
     >>> result.raw
     {u'errors': [u'You have exceeded your rate limit. Try again later or contact us at http://developer.nrel.gov/contact for assistance']}
 
@@ -84,7 +93,10 @@ All API errors are reported via JSON response, using the errors attribute.
 
 
     >>> from pypvwatts import PVWatts
-    >>> result = PVWatts.request(system_size=4, dataset='tmy2', derate=0.77, lat=40, lon=-105)
+    >>> result = PVWatts.request(
+            system_capacity=4, module_type=1, array_type=1,
+            azimuth=190, tilt=30, dataset='tmy2',
+            losses=0.13, lat=40, lon=-105)
     >>> result.errors
     [u'You have exceeded your rate limit. Try again later or contact us at http://developer.nrel.gov/contact for assistance']
 
@@ -103,6 +115,7 @@ Simple tests are provided in test.py. Run them with:
 
 Changelog
 ---------
+2.0.0 - Version is now compatible with PVWatts v5. 2.0.0 is not backwards compatible with 1.2.0. Attributes of the API have changed.
 
 1.2.0 - Fixed proxy handling, now using proxies parameter.
 
@@ -112,4 +125,4 @@ Changelog
 
 1.0.0 - First release
 
-Author: Miguel Paolino <mpaolino@gmail.com> - Copyright <http://renooble.com>
+Author: Miguel Paolino <miguel@renooble.com>, Hannes Hapke <hannes@renooble.com> - Copyright <http://renooble.com>
