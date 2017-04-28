@@ -7,6 +7,7 @@ A NREL PVWAtts API v5 thin Python wrapper built around requests library.
 
 Developed by <http://renooble.com>.
 
+Github repository: <https://github.com/mpaolino/pypvwatts>
 
 
 PVWatts API v5 Documentation: <http://developer.nrel.gov/docs/solar/pvwatts-v5/>
