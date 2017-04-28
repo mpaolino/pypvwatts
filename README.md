@@ -41,7 +41,7 @@ Usage - with class methods
     >>> result = PVWatts.request(
             system_capacity=4, module_type=1, array_type=1,
             azimuth=190, tilt=30, dataset='tmy2',
-            losses=0.13, lat=40, lon=-105)
+            losses=13, lat=40, lon=-105)
     >>> result.ac_annual
     6683.64501953125    
 
@@ -54,7 +54,7 @@ Usage - with instance methods
     >>> result = p.request(
             system_capacity=4, module_type=1, array_type=1,
             azimuth=190, tilt=30, dataset='tmy2',
-            losses=0.13, lat=40, lon=-105)
+            losses=13, lat=40, lon=-105)
     >>> result.ac_annual
     6683.64501953125    
 
@@ -69,7 +69,7 @@ accessed as a result property.
 
 Please refer to NREL PVWatts documentation for further details.
 
-http://developer.nrel.gov/docs/solar/pvwatts-v4/
+http://developer.nrel.gov/docs/solar/pvwatts-v5/
 
 Raw data
 --------
@@ -81,7 +81,7 @@ Raw result data can be queried using the result.raw attribute.
     >>> result = PVWatts.request(
             system_capacity=4, module_type=1, array_type=1,
             azimuth=190, tilt=30, dataset='tmy2',
-            losses=0.13, lat=40, lon=-105)
+            losses=13, lat=40, lon=-105)
     >>> result.raw
     {u'errors': [u'You have exceeded your rate limit. Try again later or contact us at http://developer.nrel.gov/contact for assistance']}
 
@@ -96,7 +96,7 @@ All API errors are reported via JSON response, using the errors attribute.
     >>> result = PVWatts.request(
             system_capacity=4, module_type=1, array_type=1,
             azimuth=190, tilt=30, dataset='tmy2',
-            losses=0.13, lat=40, lon=-105)
+            losses=13, lat=40, lon=-105)
     >>> result.errors
     [u'You have exceeded your rate limit. Try again later or contact us at http://developer.nrel.gov/contact for assistance']
 
