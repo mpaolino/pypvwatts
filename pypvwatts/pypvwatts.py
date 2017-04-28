@@ -1,6 +1,6 @@
 # coding: utf-8
 """
-Python wrapper for NREL PVWatt version 4.
+Python wrapper for NREL PVWatt version 5.
 """
 from .pvwattsresult import PVWattsResult
 from .pvwattserror import PVWattsError, PVWattsValidationError

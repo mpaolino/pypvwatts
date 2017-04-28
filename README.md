@@ -101,7 +101,7 @@ All API errors are reported via JSON response, using the errors attribute.
     [u'You have exceeded your rate limit. Try again later or contact us at http://developer.nrel.gov/contact for assistance']
 
 
-All parameters feeded to make the request are validated, all validations follow the restrictions documented in NREL v4 API docs at <http://developer.nrel.gov/docs/solar/pvwatts-v4/>.  All validation errors will be raised with *pypvwatts.pvwattserror.PVWattsValidationError* exception.
+All parameters feeded to make the request are validated, all validations follow the restrictions documented in NREL v5 API docs at <http://developer.nrel.gov/docs/solar/pvwatts-v5/>.  All validation errors will be raised with *pypvwatts.pvwattserror.PVWattsValidationError* exception.
 
 pypvwatts does not try to hide the fact is a thin wrapper around requests library so all other service errors such as connectivity or timeouts are raised as requests library exceptions <http://docs.python-requests.org/en/latest/user/quickstart/#errors-and-exceptions>.
 
