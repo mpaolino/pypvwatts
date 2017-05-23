@@ -116,6 +116,10 @@ Simple tests are provided in test.py. Run them with:
 
 Changelog
 ---------
+2.0.2 - Make all requests using HTTPS
+
+2.0.1 - Minor updates to README 
+
 2.0.0 - Version is now compatible with PVWatts v5. 2.0.0 is not backwards compatible with 1.2.0. Attributes of the API have changed.
 
 1.2.0 - Fixed proxy handling, now using proxies parameter.
