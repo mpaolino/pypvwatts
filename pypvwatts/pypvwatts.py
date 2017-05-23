@@ -24,7 +24,7 @@ class PVWatts():
     A Python wrapper for NREL PVWatts V5.0.0 API
     '''
 
-    PVWATTS_QUERY_URL = 'http://developer.nrel.gov/api/pvwatts/v5.json'
+    PVWATTS_QUERY_URL = 'https://developer.nrel.gov/api/pvwatts/v5.json'
     api_key = 'DEMO_KEY'
 
     def __init__(self, api_key='DEMO_KEY', proxies=None):
