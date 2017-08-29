@@ -5,7 +5,7 @@ Python wrapper for NREL PVWatt version 5.
 from .pvwattsresult import PVWattsResult
 from .pvwattserror import PVWattsError, PVWattsValidationError
 import requests
-from __version__ import VERSION
+from .__version__ import VERSION
 
 import functools
 
