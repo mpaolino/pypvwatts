@@ -116,6 +116,8 @@ Simple tests are provided in test.py. Run them with:
 
 Changelog
 ---------
+2.0.3 - Fix pip install under OSX
+
 2.0.2 - Make all requests using HTTPS
 
 2.0.1 - Minor updates to README 
