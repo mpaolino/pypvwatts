@@ -120,7 +120,10 @@ Simple tests are provided in test.py. Run them with:
 
 Changelog
 ---------
-UNRELEASED - Add Python 3 support while maintaining Python 2 backwards compatibility
+
+2.1.0 - Add Python 3 support while maintaining Python 2 backwards compatibility
+
+2.0.3 - Fix pip install under OSX
 
 2.0.2 - Make all requests using HTTPS
 
