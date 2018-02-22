@@ -8,6 +8,11 @@ import requests
 from .__version__ import VERSION
 
 import functools
+import sys
+
+if sys.version_info > (3,):
+    long = int
+    unicode = str
 
 
 # this decorator lets me use methods as both static and instance methods

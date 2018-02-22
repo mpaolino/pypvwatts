@@ -3,8 +3,8 @@
 Unit tests for pypvwatts.
 
 """
-from pypvwatts import PVWatts, PVWattsResult
-from pvwattserror import PVWattsValidationError
+from .pypvwatts import PVWatts, PVWattsResult
+from .pvwattserror import PVWattsValidationError
 
 import unittest
 import json
