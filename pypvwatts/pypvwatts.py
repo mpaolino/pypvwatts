@@ -5,9 +5,14 @@ Python wrapper for NREL PVWatt version 5.
 from .pvwattsresult import PVWattsResult
 from .pvwattserror import PVWattsError, PVWattsValidationError
 import requests
-from __version__ import VERSION
+from .__version__ import VERSION
 
 import functools
+import sys
+
+if sys.version_info > (3,):
+    long = int
+    unicode = str
 
 
 # this decorator lets me use methods as both static and instance methods
