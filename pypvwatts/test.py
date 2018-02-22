@@ -198,7 +198,6 @@ class Test(unittest.TestCase):
             system_capacity=4, module_type=1, array_type=1,
             azimuth=190, tilt=30, dataset='tmy2',
             losses=0.13, lat=40, lon=-105)
-        print results.raw
         self.assert_results(results)
 
     def test_pypvwatts_instance(self):
