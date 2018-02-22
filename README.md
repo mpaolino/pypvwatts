@@ -14,6 +14,10 @@ PVWatts API v5 Documentation: <http://developer.nrel.gov/docs/solar/pvwatts-v5/>
 
 Python requests library: <http://docs.python-requests.org/en/latest/>
 
+Supports
+--------
+
+Python 2 & Python 3
 
 Installing
 ----------
@@ -44,7 +48,7 @@ Usage - with class methods
             azimuth=190, tilt=30, dataset='tmy2',
             losses=13, lat=40, lon=-105)
     >>> result.ac_annual
-    6683.64501953125    
+    6683.64501953125
 
 Usage - with instance methods
 -----------------------------
@@ -57,7 +61,7 @@ Usage - with instance methods
             azimuth=190, tilt=30, dataset='tmy2',
             losses=13, lat=40, lon=-105)
     >>> result.ac_annual
-    6683.64501953125    
+    6683.64501953125
 
 
 Request parameters and responses
@@ -116,9 +120,11 @@ Simple tests are provided in test.py. Run them with:
 
 Changelog
 ---------
+UNRELEASED - Add Python 3 support while maintaining Python 2 backwards compatibility
+
 2.0.2 - Make all requests using HTTPS
 
-2.0.1 - Minor updates to README 
+2.0.1 - Minor updates to README
 
 2.0.0 - Version is now compatible with PVWatts v5. 2.0.0 is not backwards compatible with 1.2.0. Attributes of the API have changed.
 
