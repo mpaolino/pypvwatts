@@ -118,6 +118,10 @@ Simple tests are provided in test.py. Run them with:
 
     $ python -m unittest pypvwatts.test
 
+Or the preferred way, testing Python 2.7 and Python 3.6 together using tox (you need to install it):
+    
+    $ tox
+
 Changelog
 ---------
 
