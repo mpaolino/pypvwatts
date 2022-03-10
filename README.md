@@ -10,7 +10,7 @@ Originally developed by <http://renooble.com>.
 Github repository: <https://github.com/mpaolino/pypvwatts>
 
 
-PVWatts API v6 Documentation: <http://developer.nrel.gov/docs/solar/pvwatts-v6/>
+PVWatts API v6 Documentation: <https://developer.nrel.gov/docs/solar/pvwatts/v6/>
 
 Python requests library: <http://docs.python-requests.org/en/latest/>
 
@@ -74,7 +74,7 @@ accessed as a result property.
 
 Please refer to NREL PVWatts documentation for further details.
 
-http://developer.nrel.gov/docs/solar/pvwatts-v5/
+https://developer.nrel.gov/docs/solar/pvwatts/v6/
 
 Raw data
 --------
@@ -106,7 +106,8 @@ All API errors are reported via JSON response, using the errors attribute.
     [u'You have exceeded your rate limit. Try again later or contact us at http://developer.nrel.gov/contact for assistance']
 
 
-All parameters feeded to make the request are validated, all validations follow the restrictions documented in NREL v5 API docs at <https://developer.nrel.gov/docs/solar/pvwatts/v6/>.  All validation errors will be raised with *pypvwatts.pvwattserror.PVWattsValidationError* exception.
+All parameters feeded to make the request are validated, all validations follow the restrictions documented in NREL v6 API docs at <https://developer.nrel.gov/docs/solar/pvwatts/v6/>.
+All validation errors will be raised with *pypvwatts.pvwattserror.PVWattsValidationError* exception.
 
 pypvwatts does not try to hide the fact is a thin wrapper around requests library so all other service errors such as connectivity or timeouts are raised as requests library exceptions <http://docs.python-requests.org/en/latest/user/quickstart/#errors-and-exceptions>.
 
@@ -124,6 +125,8 @@ Or the preferred way, testing Python 2.7 and Python 3.9 together using tox (you 
 
 Changelog
 ---------
+
+3.0.1 - Fix NREL documentation URL in README.
 
 3.0.0 - Updated to PVWatts v6. Minor input validation fixes and generalized tox config to test with any python 3 version.
 
