@@ -127,6 +127,8 @@ Or the preferred way, testing Python 2.7 and Python 3.9 together using tox (you 
 Changelog
 ---------
 
+3.0.2 - Fix example output in README.
+
 3.0.1 - Fix NREL documentation URL in README.
 
 3.0.0 - Updated to PVWatts v6. Minor input validation fixes and generalized tox config to test with any python 3 version.
