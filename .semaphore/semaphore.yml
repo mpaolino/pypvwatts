@@ -20,5 +20,5 @@ blocks:
             - pip install pytest
             - pytest
       env_vars:
-        - name: FOO_1
-          value: BAR_1
+        - name: PYTHON_VERSION
+          value: '3.7'
