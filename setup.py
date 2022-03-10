@@ -32,4 +32,5 @@ setup(
     ],
     keywords='nrel pvwatts pypvwatts',
     license='MIT',
+    python_requires=">=2.7",
 )
