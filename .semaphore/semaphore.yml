@@ -26,3 +26,6 @@ blocks:
             - flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
             - pip install pytest
             - pytest
+      env_vars:
+        - name: FOO_1
+          value: BAR_1
