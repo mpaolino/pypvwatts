@@ -3,14 +3,14 @@ pypvwatts
 
 [![Build Status](https://travis-ci.org/mpaolino/pypvwatts.svg?branch=master)](https://travis-ci.org/mpaolino/pypvwatts)
 
-A NREL PVWAtts API v5 thin Python wrapper built around requests library.
+A NREL PVWAtts API v6 thin Python wrapper built around requests library.
 
-Developed by <http://renooble.com>.
+Originally developed by <http://renooble.com>.
 
 Github repository: <https://github.com/mpaolino/pypvwatts>
 
 
-PVWatts API v5 Documentation: <http://developer.nrel.gov/docs/solar/pvwatts-v5/>
+PVWatts API v6 Documentation: <http://developer.nrel.gov/docs/solar/pvwatts-v6/>
 
 Python requests library: <http://docs.python-requests.org/en/latest/>
 
@@ -106,7 +106,7 @@ All API errors are reported via JSON response, using the errors attribute.
     [u'You have exceeded your rate limit. Try again later or contact us at http://developer.nrel.gov/contact for assistance']
 
 
-All parameters feeded to make the request are validated, all validations follow the restrictions documented in NREL v5 API docs at <http://developer.nrel.gov/docs/solar/pvwatts-v5/>.  All validation errors will be raised with *pypvwatts.pvwattserror.PVWattsValidationError* exception.
+All parameters feeded to make the request are validated, all validations follow the restrictions documented in NREL v5 API docs at <https://developer.nrel.gov/docs/solar/pvwatts/v6/>.  All validation errors will be raised with *pypvwatts.pvwattserror.PVWattsValidationError* exception.
 
 pypvwatts does not try to hide the fact is a thin wrapper around requests library so all other service errors such as connectivity or timeouts are raised as requests library exceptions <http://docs.python-requests.org/en/latest/user/quickstart/#errors-and-exceptions>.
 
@@ -118,12 +118,14 @@ Simple tests are provided in test.py. Run them with:
 
     $ python -m unittest pypvwatts.test
 
-Or the preferred way, testing Python 2.7 and Python 3.6 together using tox (you need to install it):
+Or the preferred way, testing Python 2.7 and Python 3.9 together using tox (you need to install it):
     
     $ tox
 
 Changelog
 ---------
+
+3.0.0 - Updated to PVWatts v6. Minor input validation fixes and generalized tox config to test with any python 3 version.
 
 2.1.0 - Add Python 3 support while maintaining Python 2 backwards compatibility
 

@@ -1,6 +1,6 @@
 # coding: utf-8
 """
-Python wrapper for NREL PVWatt version 5.
+Python wrapper for NREL PVWatt version 6.
 """
 from .pvwattsresult import PVWattsResult
 from .pvwattserror import PVWattsError, PVWattsValidationError
@@ -26,10 +26,10 @@ class omnimethod(object):
 
 class PVWatts():
     '''
-    A Python wrapper for NREL PVWatts V5.0.0 API
+    A Python wrapper for NREL PVWatts V6.0.0 API
     '''
 
-    PVWATTS_QUERY_URL = 'https://developer.nrel.gov/api/pvwatts/v5.json'
+    PVWATTS_QUERY_URL = 'https://developer.nrel.gov/api/pvwatts/v6.json'
     api_key = 'DEMO_KEY'
 
     def __init__(self, api_key='DEMO_KEY', proxies=None):
@@ -56,7 +56,7 @@ class PVWatts():
         if module_type is None:
             return
 
-        if not isinstance(module_type, (int)):
+        if not isinstance(module_type, (int, float, long)):
             raise PVWattsValidationError(
                 'module_type must be int, long or float')
 
@@ -84,7 +84,7 @@ class PVWatts():
         if array_type is None:
             return
 
-        if not isinstance(array_type, (int)):
+        if not isinstance(array_type, (int, long, float)):
             raise PVWattsValidationError(
                 'array_type must be int, long or float')
 

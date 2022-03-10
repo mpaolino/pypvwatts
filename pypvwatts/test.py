@@ -210,11 +210,11 @@ class Test(unittest.TestCase):
         self.assert_results(results)
 
     def assert_results(self, results):
-        self.assertEqual(results.ac_annual, 7263.046875)
+        self.assertEqual(results.ac_annual, 7201.1396484375)
         self.assertEqual(results.solrad_annual, 5.446694850921631)
         self.assertEqual(results.station_info['city'], 'BOULDER')
         self.assertIn(501.930908203125, results.dc_monthly)
-        self.assertIn(183.11537170410156, results.poa_monthly)
+        self.assertIn(180.2367248535156, results.poa_monthly)
         self.assertIn(6.103845596313477, results.solrad_monthly)
 
 
