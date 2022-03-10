@@ -9,13 +9,6 @@ blocks:
     task:
       jobs:
         - name: pytest
-          matrix:
-            - env_vars: PYTHON_VERSION
-              values:
-                - '2.7'
-                - '3.5'
-                - '3.6'
-                - '3.7'
           commands:
             - sem-version python $PYTHON_VERSION
             - checkout
