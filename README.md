@@ -127,6 +127,8 @@ Or the preferred way, testing Python 2.7 and Python 3.9 together using tox (you 
 Changelog
 ---------
 
+3.0.3 - Fix nsrdb dataset validation error.
+
 3.0.2 - Fix example output in README.
 
 3.0.1 - Fix NREL documentation URL in README.
