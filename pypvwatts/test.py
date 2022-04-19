@@ -191,6 +191,15 @@ class Test(unittest.TestCase):
                           dataset='tmy2', losses=0.13,
                           lat=40, lon=-105, inv_eff=0)
 
+        datasets = ['nsrdb', 'nsrdb', 'tmy2', 'tmy3', 'intl']
+        for dataset in datasets:
+            result = PVWatts.request(system_capacity=4, module_type=1, array_type=1,
+                                     azimuth=190, tilt=30,
+                                     dataset=dataset, losses=0.13,
+                                     lat=40, lon=-105)
+            self.assertIsInstance(result, (PVWattsResult))
+
+
     def test_pypvwatts(self):
         """Test pypvwatts"""
         PVWatts.api_key = 'DEMO_KEY'

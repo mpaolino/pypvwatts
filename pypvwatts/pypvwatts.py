@@ -154,9 +154,9 @@ class PVWatts():
         if not isinstance(dataset, (str, unicode)):
             raise PVWattsValidationError('dataset must be str or unicode')
 
-        if dataset not in ('tmy2', 'tmy3', 'intl'):
+        if dataset not in ('tmy2', 'tmy3', 'intl', 'nsrdb'):
             raise PVWattsValidationError(
-                'dataset must be \'tmy2\', \'tmy3\' or \'intl\'')
+                'dataset must be \'nsrdb\', \'tmy2\', \'tmy3\' or \'intl\'')
 
         return dataset
 
